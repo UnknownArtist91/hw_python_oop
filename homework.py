@@ -100,7 +100,7 @@ class Swimming(Training):
         COEFF_CALORIE_SWIM_2: float = 2
         spent_calories_swim: float = ((self.get_mean_speed()
                                       + COEFF_CALORIE_SWIM_1)
-                                      * COEFF_CALORIE_SWIM_1 * self.weight)
+                                      * COEFF_CALORIE_SWIM_2* self.weight)
         return spent_calories_swim
 def read_package(workout_type: str, data: list) -> Training:
     """Данные с датчиков."""
