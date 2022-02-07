@@ -126,7 +126,7 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Данные с датчиков."""
-    meaning: dict[str , type[Training]] = {'SWM': Swimming,
+    meaning: dict[type[Training], str] = {'SWM': Swimming,
                                            'RUN': Running,
                                            'WLK': SportsWalking}
     if workout_type not in meaning:
