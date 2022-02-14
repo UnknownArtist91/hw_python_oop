@@ -126,7 +126,8 @@ class Swimming(Training):
         """Расчет калорий при плавании."""
         spent_calories_swim: float = ((self.get_mean_speed()
                                       + self.CALLORIES_MULTIPLIER_SWIMMING_1)
-                                      * self.CALLORIES_MULTIPLIER_SWIMING_2 * self.weight)
+                                      * self.CALLORIES_MULTIPLIER_SWIMING_2 *
+                                      self.weight)
         return spent_calories_swim
 
 
