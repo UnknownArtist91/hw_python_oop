@@ -64,13 +64,13 @@ class Training:
 class Running(Training):
     """Тренировка: бег."""
 
-    CALLORIES_MULTIPLIER_RUN_1 = 18
-    CALLORIES_MULTIPLIER_RUN_2 = 20
+    CALLORIES_RUN_1 = 18
+    CALLORIES_RUN_2 = 20
 
     def get_spent_calories(self) -> float:
         """Расчет потраченных калорий при беге."""
-        return ((self.CALLORIES_MULTIPLIER_RUN_1
-                * self.get_mean_speed() - self.CALLORIES_MULTIPLIER_RUN_2)
+        return ((self.CALLORIES_RUN_1
+                * self.get_mean_speed() - self.CALLORIES_RUN_2)
                 * self.weight / self.M_IN_KM
                 * (self.duration * self.MIN_IN_HOUR))
 
@@ -78,8 +78,8 @@ class Running(Training):
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
 
-    CALLORIES_MULTIPLIER_WALKING_1 = 0.035
-    CALLORIES_MULTIPLIER_WALKING_2 = 0.029
+    CALLORIES_WALKING_1 = 0.035
+    CALLORIES_WALKING_2 = 0.029
 
     def __init__(self,
                  action: int,
@@ -92,10 +92,10 @@ class SportsWalking(Training):
     def get_spent_calories(self) -> float:
         """Расчет калорий при ходьбе."""
         mean_speed: float = self.get_mean_speed()
-        return ((self.CALLORIES_MULTIPLIER_WALKING_1
+        return ((self.CALLORIES_WALKING_1
                 * self.weight
                 + (mean_speed ** 2 // self.height)
-                * self.CALLORIES_MULTIPLIER_WALKING_2
+                * self.CALLORIES_WALKING_2
                 * self.weight)
                 * self.MIN_IN_HOUR * self.duration)
 
@@ -104,8 +104,8 @@ class Swimming(Training):
     """Тренировка: плавание."""
 
     LEN_STEP: float = 1.38
-    CALLORIES_MULTIPLIER_SWIM_1: float = 1.1
-    CALLORIES_MULTIPLIER_SWIM_2: float = 2
+    CALLORIES_SWIMMING_1: float = 1.1
+    CALLORIES_SWIMING_2: float = 2
 
     def __init__(self,
                  action: int,
@@ -125,8 +125,8 @@ class Swimming(Training):
     def get_spent_calories(self) -> float:
         """Расчет калорий при плавании."""
         spent_calories_swim: float = ((self.get_mean_speed()
-                                      + self.CALLORIES_MULTIPLIER_SWIM_1)
-                                      * self.CALLORIES_MULTIPLIER_SWIM_2 * self.weight)
+                                      + self.CALLORIES_SWIMMING_1)
+                                      * self.CALLORIES_SWIMING_2 * self.weight)
         return spent_calories_swim
 
 
