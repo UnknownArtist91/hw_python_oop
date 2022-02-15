@@ -105,7 +105,7 @@ class Swimming(Training):
 
     LEN_STEP: float = 1.38
     CALORY_SWIM_COMPLICATION: float = 1.1
-    CALORY_SWIM_MULTIPLIER: float = 2
+    CALOR_SWIM_MULTIPL: float = 2
 
     def __init__(self,
                  action: int,
@@ -126,7 +126,7 @@ class Swimming(Training):
         """Расчет калорий при плавании."""
         spent_calories_swim: float = ((self.get_mean_speed()
                                       + self.CALORY_SWIM_COMPLICATION)
-                                      * self.CALORY_SWIM_MULTIPLIER * self.weight)
+                                      * self.CALOR_SWIM_MULTIPL * self.weight)
         return spent_calories_swim
 
 
