@@ -16,11 +16,11 @@ class InfoMessage:
 
     def get_message(self) -> str:
         """Итоги тренировки"""
-        return(f'Тип тренировки: {self.training_type}; '
-               f'Длительность: {self.duration:.3f} ч.; '
-               f'Дистанция: {self.distance:.3f} км; '
-               f'Ср. скорость: {self.speed:.3f} км/ч; '
-               f'Потрачено ккал: {self.calories:.3f}.')
+        return (f'Тип тренировки: {self.training_type}; '
+                f'Длительность: {self.duration:.3f} ч.; '
+                f'Дистанция: {self.distance:.3f} км; '
+                f'Ср. скорость: {self.speed:.3f} км/ч; '
+                f'Потрачено ккал: {self.calories:.3f}.')
 
 
 class Training:
@@ -70,7 +70,7 @@ class Running(Training):
     def get_spent_calories(self) -> float:
         """Расчет потраченных калорий при беге."""
         return ((self.CALORY_SPEED_MULTIPLIER
-                * self.get_mean_speed() - self.CALORY_SPEED_SHIFT)
+                 * self.get_mean_speed() - self.CALORY_SPEED_SHIFT)
                 * self.weight / self.M_IN_KM
                 * (self.duration * self.MIN_IN_HOUR))
 
@@ -93,10 +93,10 @@ class SportsWalking(Training):
         """Расчет калорий при ходьбе."""
         mean_speed: float = self.get_mean_speed()
         return ((self.CALORY_WALK_MULTIPLIER_1
-                * self.weight
-                + (mean_speed ** 2 // self.height)
-                * self. CALORY_WALK_MULTIPLIER_2
-                * self.weight)
+                 * self.weight
+                 + (mean_speed ** 2 // self.height)
+                 * self.CALORY_WALK_MULTIPLIER_2
+                 * self.weight)
                 * self.MIN_IN_HOUR * self.duration)
 
 
@@ -105,7 +105,7 @@ class Swimming(Training):
 
     LEN_STEP: float = 1.38
     CALORY_SWIM_ADDITION: float = 1.1
-    CALOR_SWIM_MULTIPL: float = 2
+    CALORY_SWIM_MULTIPLIER: float = 2
 
     def __init__(self,
                  action: int,
@@ -125,8 +125,9 @@ class Swimming(Training):
     def get_spent_calories(self) -> float:
         """Расчет калорий при плавании."""
         spent_calories_swim: float = ((self.get_mean_speed()
-                                      + self.CALORY_SWIM_ADDITION)
-                                      * self.CALOR_SWIM_MULTIPL * self.weight)
+                                       + self.CALORY_SWIM_ADDITION)
+                                      * self.CALORY_SWIM_MULTIPLIER
+                                      * self.weight)
         return spent_calories_swim
 
 
